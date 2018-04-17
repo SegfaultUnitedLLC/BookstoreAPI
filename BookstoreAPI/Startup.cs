@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookstoreAPI.Data;
+using BookstoreAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookstoreAPI
 {
@@ -24,6 +28,11 @@ namespace BookstoreAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<BooksForAllContext>(x =>
+                x.UseSqlServer(Configuration.GetConnectionString("BooksForAllContext")));
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<BooksForAllContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
