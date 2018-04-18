@@ -10,24 +10,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace BookstoreAPI.Data
 {
-    public class BooksForAllContext : IdentityDbContext<User>
+    public class BooksForAllContext : DbContext
     {
         public BooksForAllContext(DbContextOptions<BooksForAllContext> options) : base(options)
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+        public DbSet<User> Users { get; set; }
 
-            builder.Entity<User>().ToTable("Users");
-            builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims");
-            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles");
-            builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
-            builder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");
-            builder.Entity<IdentityRole<string>>().ToTable("Roles");
-            builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
-        }
-        
     }
 }

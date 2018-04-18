@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-
-namespace BookstoreAPI.Models
+﻿namespace BookstoreAPI.Models
 {
-    // Add profile data for application users by adding properties to the ApplicationUser class
-    public class User : IdentityUser
+    public class User
     {
-        public User()
-        {
-        }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
     }
 }

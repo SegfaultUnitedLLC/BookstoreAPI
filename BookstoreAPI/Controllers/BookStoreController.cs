@@ -8,9 +8,6 @@ namespace BookstoreAPI.Controllers
 {
     public class BookStoreController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        
     }
 }
