@@ -15,8 +15,8 @@ namespace BookstoreAPI.Data
         public BooksForAllContext(DbContextOptions<BooksForAllContext> options) : base(options)
         {
         }
-
         public DbSet<User> Users { get; set; }
+
 
     }
 }

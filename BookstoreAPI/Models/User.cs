@@ -1,3 +1,4 @@
+
 ﻿namespace BookstoreAPI.Models
 {
     public class User

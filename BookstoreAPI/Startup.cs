@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
+
 namespace BookstoreAPI
 {
     public class Startup
@@ -32,6 +33,7 @@ namespace BookstoreAPI
         {
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
             services.AddMvc();
+
             services.AddCors();
             services.AddDbContext<BooksForAllContext>(x =>
                 x.UseSqlServer(Configuration.GetConnectionString("BooksForAll")));
@@ -46,7 +48,6 @@ namespace BookstoreAPI
                         ValidateAudience = false
                     };
                 });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
